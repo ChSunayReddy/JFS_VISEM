@@ -76,7 +76,7 @@
 
    
     <!-- Dropdown -->
-    <select id="nameSelect" onchange="showDetails()" style='height:40px; width:320px;'>
+    <select id="nameSelect" onchange="displaynone()" style='height:40px; width:320px;'>
         <option value="">-- Select Name --</option>
 
         <!-- Earlier personalities -->
@@ -100,6 +100,7 @@
         <option value="AdaLovelace">Ada Lovelace (1st Programmer)</option>
         <option value="madhu">Madhu (JFS Trainer, CDC, IARE Hyderabad)</option>
     </select>
+    <button onclick="confirmation()" style='height:40px; '> Show Details</button>
 
     <div class="container">
 
@@ -118,7 +119,6 @@
 
     <script>
 
-      
 function showDetails() {
     let name = document.getElementById("nameSelect").value;
 
@@ -177,6 +177,7 @@ function showDetails() {
         return;
     }
 
+
     photo.src = photos[name];
     photo.style.display = "block";
     info.innerHTML = details[name];
@@ -186,6 +187,21 @@ function showDetails() {
         photo.classList.add("photo-james");
 		photo.classList.add("photo-james-blue");
     }
+}
+function confirmation(){
+    let confirmAction = confirm("Do you want to see the details?");
+    if (confirmAction) {
+        showDetails();
+    } else {
+        displaynone();
+    }
+}
+function displaynone(){
+    let photo = document.getElementById("photo");
+    let info = document.getElementById("infoText");
+    photo.style.display = "none";
+    info.innerHTML = "Please select a person from the dropdown.";
+    return;
 }
 
         /* ----- DISPLAY INFORMATION ----- */
